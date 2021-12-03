@@ -1,6 +1,25 @@
 <?php
 
+use App\Behavioral\ConcreteSubject;
+use App\Behavioral\Observer;
+
 require "../vendor/autoload.php";
+
+$messager = new ConcreteSubject();
+
+$batman = new Observer("Batman");
+$messager->attach($batman);
+
+$superman = new Observer("Superman");
+$messager->attach($superman);
+
+$messager->someBusinessLogic();
+$messager->someBusinessLogic();
+
+$messager->detach($batman);
+
+$messager->someBusinessLogic();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
