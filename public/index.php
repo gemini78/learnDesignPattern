@@ -1,6 +1,25 @@
 <?php
 
+use App\Structural\ISubject;
+use App\Structural\Proxy;
+use App\Structural\RealSubject;
+
 require "../vendor/autoload.php";
+function clientCode(ISubject $subject)
+{
+    $subject->request();
+}
+
+echo "Client: Executing code with the realSubject";
+$realSubject = new RealSubject;
+clientCode($realSubject);
+
+echo "<br>";
+
+echo "<br><br>Client: Executing code with the proxy";
+$proxy = new Proxy($realSubject);
+clientCode($proxy);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
