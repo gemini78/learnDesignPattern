@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Creational;
+
+class Singleton
+{
+    private static $instance = null;
+
+    private function __construct()
+    {
+        // Operations        
+    }
+
+    public static function getInstance()
+    {
+        if (self::$instance == null) {
+            self::$instance = new Singleton();
+        }
+
+        return self::$instance;
+    }
+}
